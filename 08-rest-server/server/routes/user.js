@@ -3,10 +3,11 @@ const express = require('express');
 const _ = require('underscore');
 
 const User = require('../models/user');
+const { verifyToken } = require('../middlewares/auth');
 
 const app = express();
 
-app.get('/usuario', function (req, res) {
+app.get('/usuario', verifyToken, (req, res) => {
   let { desde } = req.query || 0;
   desde = Number(desde);
   let { limite } = req.query || 5;
