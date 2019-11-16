@@ -6,7 +6,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 
 // Token
 // 60 seg, 60 min, 24 h, 30 dias
-process.env.CADUCIDAD_TOKEN = 60 * 60 * 24 * 30;
+process.env.CADUCIDAD_TOKEN = '30 days';
 
 // Auth
 process.env.SEED = process.env.SEED || 'seed-desarrollo';

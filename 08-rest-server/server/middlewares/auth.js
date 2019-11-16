@@ -8,7 +8,9 @@ let verifyToken = (req, res, next) => {
     if (err) {
       return res.status(401).json({
         ok: false,
-        err
+        err: {
+          message: 'Token no valido'
+        }
       });
     }
 
@@ -17,6 +19,23 @@ let verifyToken = (req, res, next) => {
   });
 };
 
+//Verify Admin
+let verifyAdminRole = (req, res, next) => {
+  let { usuario } = req;
+
+  if (usuario.role === 'ADMIN_ROLE') {
+    next();
+  } else {
+    return res.json({
+      ok: false,
+      err: {
+        message: 'El usuario no es administrador'
+      }
+    });
+  }
+}
+
 module.exports = {
-  verifyToken
+  verifyToken,
+  verifyAdminRole
 }
